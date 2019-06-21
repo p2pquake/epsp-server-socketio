@@ -1,0 +1,24 @@
+{
+  "name": "epsp-server-socketio",
+  "version": "0.1.0",
+  "description": "EPSP Socket.IO endpoint",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p2pquake/epsp-server-socketio.git"
+  },
+  "author": "P2PQuake development team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/p2pquake/epsp-server-socketio/issues"
+  },
+  "homepage": "https://github.com/p2pquake/epsp-server-socketio#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^3.5.2"
+  }
+}
