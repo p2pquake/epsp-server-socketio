@@ -1,16 +1,17 @@
 import express from 'express';
-import socketio, { Socket } from 'socket.io';
+import socketio from 'socket.io';
 import http from 'http';
-import Router from './p2pquake/router';
+import ReceiveRouter from './p2pquake/receiveRouter';
 
 // configuration
 const port = process.env.PORT || 3000;
 
 // initialize
 const app = express();
+app.use(express.json());
 const server = http.createServer(app);
 const io = socketio(server);
-const p2pquakeRouter = new Router().router();
+const p2pquakeRouter = new ReceiveRouter(io).router();
 
 // mount
 app.use('/p2pquake', p2pquakeRouter);
