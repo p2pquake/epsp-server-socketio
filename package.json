@@ -17,8 +17,13 @@
     "url": "https://github.com/p2pquake/epsp-server-socketio/issues"
   },
   "homepage": "https://github.com/p2pquake/epsp-server-socketio#readme",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
+  },
   "devDependencies": {
+    "@types/express": "^4.17.0",
+    "@types/socket.io": "^2.1.2",
     "typescript": "^3.5.2"
   }
 }
