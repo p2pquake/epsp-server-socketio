@@ -1,19 +1,19 @@
 import express from 'express';
 import socketio, { Socket } from 'socket.io';
 import http from 'http';
+import Router from './p2pquake/router';
 
 // configuration
 const port = process.env.PORT || 3000;
 
 // initialize
 const app = express();
-let server = http.createServer(app);
-let io = socketio(server);
+const server = http.createServer(app);
+const io = socketio(server);
+const p2pquakeRouter = new Router().router();
 
 // mount
-app.get('/', (_, res) => {
-  res.send('Hello world!')
-});
+app.use('/p2pquake', p2pquakeRouter);
 
 io.on('connection', (socket) => {
   console.log('connected');
@@ -26,4 +26,3 @@ io.on('connection', (socket) => {
 server.listen(port, () => {
   console.log(`Listening on port ${port}!`);
 });
-
