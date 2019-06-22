@@ -13,8 +13,13 @@ export default class ReceiveRouter {
     const router = express.Router();
     router.post('/broadcast', (req, res) => {
       // FIXME: No authentication
-      // FIXME: No validation
-      this.broadcaster.broadcast(req.body["channel"], req.body["data"]);
+
+      if (!req.body["code"]) {
+        res.status(400).end();
+        return;
+      }
+
+      this.broadcaster.broadcast(req.body["code"].toString(), req.body);
       res.end();
     });
     return router;

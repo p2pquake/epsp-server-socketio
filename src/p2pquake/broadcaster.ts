@@ -7,7 +7,7 @@ export default class Broadcaster {
     this.server = server;
   }
 
-  public broadcast(channel: Channel, data: object) {
+  public broadcast(channel: string, data: object) {
     this.server.sockets.emit(channel, data);
   }
 }
