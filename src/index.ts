@@ -18,9 +18,8 @@ app.use('/p2pquake', p2pquakeRouter);
 
 io.on('connection', (socket) => {
   console.log('connected');
-  socket.emit('example', { hello: 'world' });
-  socket.on('other event', (data) => {
-    console.log(data);
+  socket.on('join', (message) => {
+    socket.join(message);
   });
 });
 

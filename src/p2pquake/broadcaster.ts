@@ -8,6 +8,7 @@ export default class Broadcaster {
   }
 
   public broadcast(channel: string, data: object) {
-    this.server.sockets.emit(channel, data);
+    this.server.to(channel).emit('update', data);
+    this.server.to('all').emit('update', data);
   }
 }

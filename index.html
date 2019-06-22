@@ -5,9 +5,12 @@
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script>
       var socket = io.connect('http://localhost:3000');
-      socket.on('example', function (data) {
+      socket.on('connect', function () {
+        console.log('connected');
+        socket.emit('join', ['all']);
+      });
+      socket.on('update', function(data) {
         console.log(data);
-        socket.emit('other event', { my: 'data' });
       });
     </script>
   </body>
