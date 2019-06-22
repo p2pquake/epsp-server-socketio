@@ -6,8 +6,8 @@ export default class ReceiveRouter {
   private key: string;
   private broadcaster: Broadcaster;
 
-  public constructor(server: socketio.Server) {
-    this.broadcaster = new Broadcaster(server);
+  public constructor(namespace: socketio.Namespace) {
+    this.broadcaster = new Broadcaster(namespace);
     this.key = process.env.EPSP_RECEIVE_ROUTER_KEY || '';
     
     if (!this.key) {
@@ -17,7 +17,7 @@ export default class ReceiveRouter {
 
   public router(): express.Router {
     const router = express.Router();
-    router.post('/broadcast', (req, res) => {
+    router.post('/v1/broadcast', (req, res) => {
       const key = req.body["key"];
       if (key != this.key) { res.status(401).end(); return; }
 

@@ -11,12 +11,13 @@ const app = express();
 app.use(express.json());
 const server = http.createServer(app);
 const io = socketio(server);
-const p2pquakeRouter = new ReceiveRouter(io).router();
+const ioV1 = io.of('/v1');
+const p2pquakeRouter = new ReceiveRouter(ioV1).router();
 
 // mount
 app.use('/p2pquake', p2pquakeRouter);
 
-io.on('connection', (socket) => {
+ioV1.on('connection', (socket) => {
   console.log('connected');
   socket.on('join', (message) => {
     socket.join(message);
