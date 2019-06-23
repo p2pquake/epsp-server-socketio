@@ -2,9 +2,10 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <p>Check console (using developer tools).</p>
+    <script src="https://realtime.p2pquake.net/socket.io/socket.io.js"></script>
     <script>
-      var socket = io.connect('http://localhost:3000/v1');
+      var socket = io.connect('https://realtime.p2pquake.net/v1');
       socket.on('connect', function () {
         console.log('connected');
         socket.emit('join', ['all']);
