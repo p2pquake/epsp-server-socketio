@@ -9,7 +9,7 @@ export default class ReceiveRouter {
   public constructor(namespace: socketio.Namespace) {
     this.broadcaster = new Broadcaster(namespace);
     this.key = process.env.EPSP_RECEIVE_ROUTER_KEY || '';
-    
+
     if (!this.key) {
       throw "Key not defined";
     }

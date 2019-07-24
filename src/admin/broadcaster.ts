@@ -2,7 +2,7 @@ import socketio from 'socket.io';
 
 export default class Broadcaster {
   private namespace: socketio.Namespace;
-  
+
   public constructor(namespace: socketio.Namespace) {
     this.namespace = namespace;
   }
