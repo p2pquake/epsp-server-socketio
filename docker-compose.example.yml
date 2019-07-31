@@ -1,0 +1,17 @@
+version: "2"
+services:
+  node:
+    image: "node:lts-alpine"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - PORT=8080
+      - SOCKET_IO_PATH=/v1/socket.io
+      - ADMIN_PATH=/v1/admin
+      - EPSP_RECEIVE_ROUTER_KEY=testkey
+    volumes:
+      - ./:/home/node/app
+    ports:
+            - "8080:8080"
+    command: sh -c "npm install && npm run server"
+    restart: always

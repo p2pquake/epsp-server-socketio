@@ -3,9 +3,9 @@
 <html>
   <body>
     <p>Check console (using developer tools).</p>
-    <script src="https://realtime.p2pquake.net/socket.io/socket.io.js"></script>
+    <script src="http://localhost:8080/v1/socket.io/socket.io.js"></script>
     <script>
-      var socket = io.connect('https://realtime.p2pquake.net/v1');
+      var socket = io.connect('http://localhost:8080', { path: '/v1/socket.io' });
       socket.on('connect', function () {
         console.log('connected');
         socket.emit('join', ['all']);
