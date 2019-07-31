@@ -1,14 +1,14 @@
 import socketio from 'socket.io';
 
 export default class Broadcaster {
-  private namespace: socketio.Namespace;
+  private server: socketio.Server;
 
-  public constructor(namespace: socketio.Namespace) {
-    this.namespace = namespace;
+  public constructor(server: socketio.Server) {
+    this.server = server;
   }
 
   public broadcast(channel: string, data: object) {
-    this.namespace.to(channel).emit('update', data);
-    this.namespace.to('all').emit('update', data);
+    this.server.to(channel).emit('update', data);
+    this.server.to('all').emit('update', data);
   }
 }

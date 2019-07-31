@@ -5,19 +5,20 @@ import ReceiveRouter from './admin/receiveRouter';
 
 // configuration
 const port = process.env.PORT || 3000;
+const socketioPath = process.env.SOCKET_IO_PATH || '/socket.io';
+const adminPath = process.env.ADMIN_PATH || '/admin';
 
 // initialize
 const app = express();
 app.use(express.json());
 const server = http.createServer(app);
-const io = socketio(server);
-const ioV1 = io.of('/v1');
-const adminRouter = new ReceiveRouter(ioV1).router();
+const io = socketio(server, { path: socketioPath } );
+const adminRouter = new ReceiveRouter(io).router();
 
 // mount
-app.use('/admin', adminRouter);
+app.use(adminPath, adminRouter);
 
-ioV1.on('connection', (socket) => {
+io.on('connection', (socket) => {
   console.log('connected');
   socket.on('join', (message) => {
     socket.join(message);
